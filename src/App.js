@@ -1,18 +1,17 @@
-import styles from './App.module.css';
+import './App.module.css';
+import Nav from './layout/Nav';
+import Header from './layout/Header';
+import ListContainer from './layout/ListContainer';
+import Footer from './layout/Footer';
 
 function App() {
   return (
     <>
-    <div className={styles.nav}>Nav
-    </div>
-    <div className={styles.header}>Header
-    </div>
-    <div className={styles.listContainer}>ListContainer
-    </div>
-    <div className={styles.footer}>Footer
-    </div>
+    <Nav/>
+    <Header/>
+    <ListContainer/>
+    <Footer/>
     </>
   );
 }
-
 export default App;

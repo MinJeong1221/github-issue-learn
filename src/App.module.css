@@ -1,29 +1,48 @@
 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
 *{
   box-sizing: border-box;
 }
-.nav{
-  padding: 16px 32px;
-  background-color: #24292f;
-  display: flex;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
-  align-items: center;
-}
-.header{
-  padding: 16px 32px;
-  background-color: rgb(246, 248, 250);
-  height: 96px;
-  border-bottom: 1px solid #ddd;
-  /* box-shadow: inset -1px 0 hsla(210, 18%, 87%, 1); */
-}
-.listContainer{
-  padding: 0px 32px;
-  margin-top: 24px;
-  height: 300px;
-}
-.footer{
-  padding: 40px 16px 8px;
-  margin-top: 40px;
-  border-top: 1px solid #ddd;
-}
+
