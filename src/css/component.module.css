@@ -23,8 +23,12 @@
   color:#000
 }
 .circle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 3px;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: aqua;
+  background-color: rgba(27, 31, 36, 0.15);
 }
