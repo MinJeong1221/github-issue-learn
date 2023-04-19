@@ -1,6 +1,8 @@
 import React, { Children, useEffect, useState } from 'react'
 import styles from "./ListContainer.module.css"
 import Button from "../components/Button"
+import ListItem from '../components/ListItem';
+import ListItemLayout from '../components/ListItemLayout';
 
 function ListContainer() {
   const [inputValue, setInputValue] =  useState('is:pr id:open');
@@ -18,6 +20,19 @@ function ListContainer() {
           onChange={(e)=> setInputValue(e.target.value)}
         />
         <Button style={{backgroundColor: 'green', color:'#FFF'}}>New Issue</Button>        
+      </div>
+      <ListItemLayout className={styles.listFilter}>
+        <div className={styles.filterLists}>
+          <span>Author</span>
+          <span>Lable</span>
+          <span>Project</span>
+          <span>Milestones</span>
+          <span>Assignee</span>
+          <span>Sort</span>
+        </div>
+      </ListItemLayout>
+      <div className={styles.itemContainer}>
+        <ListItem/>
       </div>
     </div>
   )
