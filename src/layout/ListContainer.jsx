@@ -33,7 +33,11 @@ function ListContainer() {
         </div>
       </ListItemLayout>
       <div className={styles.itemContainer}>
-        <ListItem/>
+        <ListItem 
+        badges={[
+          {color: 'red',
+          title: "Bug2",}
+        ]}/>
       </div>
     </div>
   )
