@@ -6,6 +6,11 @@
   display: flex;
   align-items: flex-start;
 }
+.wrapper:last-child{
+  border-bottom: 1px solid #d0d7de;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
 
 .wrapper:hover{
   background: rgb(246, 248, 250);
@@ -13,6 +18,5 @@
 
 .checkbox{
   margin-right: 8px;
-  margin-top: 5px;
-  
+  margin-top: 5px;  
 }

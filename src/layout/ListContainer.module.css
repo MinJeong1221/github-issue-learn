@@ -8,13 +8,6 @@
   flex-direction: "space-between";
 }
 
-.listFilter{
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  background: rgb(246, 248, 250);
-  padding: 16px;
-}
-
 .input{
   background-color: #f6f8fa;
   border-radius: 6px;

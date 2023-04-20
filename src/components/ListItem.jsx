@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './ListItem.module.css'
 import ListItemLayout from './ListItemLayout'
 
-function ListItem({checked, onChangeCheckBox, onClickTitle}) {
+export default function ListItem({checked, onChangeCheckBox, onClickTitle}) {
   return (
     <ListItemLayout>
       <div>
@@ -12,7 +12,6 @@ function ListItem({checked, onChangeCheckBox, onClickTitle}) {
         <div className={styles.description}> # Description</div>
       </div>
     </ListItemLayout>
-  )
+  );
 }
 
-export default ListItem

@@ -1,4 +1,4 @@
-import React, { Children, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styles from "./ListContainer.module.css"
 import Button from "../components/Button"
 import ListItem from '../components/ListItem';
@@ -21,7 +21,8 @@ function ListContainer() {
         />
         <Button style={{backgroundColor: 'green', color:'#FFF'}}>New Issue</Button>        
       </div>
-      <ListItemLayout className={styles.listFilter}>
+      <ListItemLayout 
+        style={{background: 'rgb(246, 248, 250)', padding:'16px', borderTopLeftRadius: '6px', borderTopRightRadius: '6px', marginTop: '20px'}} >
         <div className={styles.filterLists}>
           <span>Author</span>
           <span>Lable</span>

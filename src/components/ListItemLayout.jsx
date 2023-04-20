@@ -1,10 +1,9 @@
 import React from 'react'
-import cx from 'clsx'
 import styles from './ListItemLayout.module.css'
 
-function ListItemLayout({children, className}) {
+export default function ListItemLayout({children, style}) {
   return (
-    <div className={cx(styles.wrapper, className)}>
+    <div className={styles.wrapper} style={style}>
       <input 
         type="checkbox" 
         className={styles.checkbox} 
@@ -16,5 +15,3 @@ function ListItemLayout({children, className}) {
     </div>
   )
 }
-
-export default ListItemLayout
