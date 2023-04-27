@@ -7,10 +7,10 @@ import Footer from './layout/Footer';
 function App() {
   return (
     <>
-    <Nav/>
-    <Header/>
-    <ListContainer/>
-    <Footer/>
+      <Nav />
+      <Header />
+      <ListContainer />
+      <Footer />
     </>
   );
 }
