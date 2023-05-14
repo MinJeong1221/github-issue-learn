@@ -1,11 +1,9 @@
-import React from 'react'
-import styles from './Badge.module.css'
-import clsx from 'clsx'
+import React from "react";
+import styles from "./Badge.module.css";
+import clsx from "clsx";
 
-function Badge({title, color}) {
-  return (
-    <span className={clsx(styles.badge, styles[color])}>{title}</span>
-  )
+function Badge({ title, color }) {
+  return <span className={clsx(styles.badge, styles[color])}>{title}</span>;
 }
 
-export default Badge
+export default Badge;
