@@ -24,13 +24,13 @@
   align-items: center;
 }
 
-.filterLists > span{
+.filterLists > div > span{
   padding: 0 16px;
   line-height: 21px;
   cursor: pointer;
   color: #57606a;
 }
-.filterLists > span:hover{
+.filterLists > div > span:hover{
   color: #000;
 }
 
@@ -41,4 +41,14 @@
 
 .selected{
   font-weight: 700;
+}
+
+.filterItem{
+  position: relative;
+}
+
+.modalContainer{
+  top: 20px;
+  left: 20px;
+  position: absolute;
 }
