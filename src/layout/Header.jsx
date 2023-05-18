@@ -8,18 +8,14 @@ function Header() {
   return (
     <div className={styles.header}>
       <div className={styles.buttonContainer}>
-        <Button style={{ backgroundColor: "transparent", color: "#000" }}>
-          Watch
-        </Button>
+        <Button className={styles.silverButton}>Watch</Button>
         <Space />
-        <Button style={{ backgroundColor: "transparent", color: "#000" }}>
+        <Button>
           Fork
           <div className={styles.circle}>5</div>
         </Button>
         <Space />
-        <Button style={{ backgroundColor: "transparent", color: "#000" }}>
-          Star
-        </Button>
+        <Button>Star</Button>
       </div>
       <Tabs />
     </div>

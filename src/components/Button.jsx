@@ -1,10 +1,15 @@
 import React from "react";
+import cx from "clsx";
 import styles from "./Button.module.css";
 
-export default function ButtonG({ children, style }) {
+function Button({ children, color }) {
   return (
-    <button className={styles.button} style={style}>
+    <button
+      className={cx(styles.button, { [styles.green]: color === "green" })}
+    >
       {children}
     </button>
   );
 }
+
+export default Button;

@@ -9,6 +9,10 @@
   margin-bottom: 20px;
   justify-content: flex-end;
 }
+.silverButton{
+  background-color: transparent;
+  color: #000;
+}
 .circle{
  width: 20px;
  height: 20px;
