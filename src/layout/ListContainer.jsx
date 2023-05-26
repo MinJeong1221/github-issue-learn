@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styles from "./ListContainer.module.css";
 import Button from "../components/Button";
 import ListItem from "../components/ListItem";
@@ -9,16 +10,27 @@ import OpenClosedFilters from "../components/OpenClosedFilters";
 
 function ListContainer() {
   const [inputValue, setInputValue] = useState("is:pr id:open");
-
-  const [list, setList] = useState([] /* 초기 data를 받아온값 */);
+  const [checked, setChecked] = useState(false);
+  const [list, setList] = useState([]); //data
 
   const [page, setPage] = useState(1);
   // const MAX_PAGE = getData().totalCount // = 30/100 = 3.3333 => 4
-  // const [checkedList, setCheckedListe] = useState([]);
 
   //   useEffect(()=> {
   //     console.log({inputValue});
   // }, [inputValue]);
+
+  async function getData() {
+    const { data } = await axios.get(
+      "https://api.github.com/repos/facebook/react/issues",
+    );
+    setList(data);
+    console.log(data);
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <>
@@ -50,8 +62,13 @@ function ListContainer() {
           />
         </ListItemLayout>
         <div className={styles.itemContainer}>
-          {list.map((listItem, index) => (
-            <ListItem key={index} badges={[{ color: "red", title: "Bug2" }]} />
+          {list.map((item) => (
+            <ListItem
+              key={item.id}
+              data={item}
+              checked={checked}
+              onChangeCheckBox={() => setChecked((checked) => !checked)}
+            />
           ))}
         </div>
       </div>
