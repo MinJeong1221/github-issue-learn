@@ -12,25 +12,23 @@ function ListContainer() {
   const [inputValue, setInputValue] = useState("is:pr id:open");
   const [checked, setChecked] = useState(false);
   const [list, setList] = useState([]); //data
-
   const [page, setPage] = useState(1);
-  // const MAX_PAGE = getData().totalCount // = 30/100 = 3.3333 => 4
 
-  //   useEffect(()=> {
-  //     console.log({inputValue});
-  // }, [inputValue]);
-
-  async function getData() {
-    const { data } = await axios.get(
+  async function getData(pageParam) {
+    const data = await axios.get(
       "https://api.github.com/repos/facebook/react/issues",
+      {
+        params: { page: pageParam },
+      },
     );
-    setList(data);
-    console.log(data);
+    setList(data.data);
   }
 
   useEffect(() => {
-    getData();
-  }, []);
+    getData(page);
+  }, [page]);
+
+  console.log({ list });
 
   return (
     <>
