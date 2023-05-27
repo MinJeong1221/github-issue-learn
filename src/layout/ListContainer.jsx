@@ -13,20 +13,22 @@ function ListContainer() {
   const [checked, setChecked] = useState(false);
   const [list, setList] = useState([]); //data
   const [page, setPage] = useState(1);
+  const [isOpenMode, setIsOpenMode] = useState(true);
+  const maxPage = 10;
 
-  async function getData(pageParam) {
+  async function getData(params) {
     const data = await axios.get(
       "https://api.github.com/repos/facebook/react/issues",
       {
-        params: { page: pageParam },
+        params,
       },
     );
     setList(data.data);
   }
 
   useEffect(() => {
-    getData(page);
-  }, [page]);
+    getData({ page, state: isOpenMode ? "open" : "closed" });
+  }, [page, isOpenMode]);
 
   console.log({ list });
 
@@ -41,7 +43,10 @@ function ListContainer() {
           />
           <Button color={"green"}>New Issue</Button>
         </div>
-        <OpenClosedFilters />
+        <OpenClosedFilters
+          isOpenMode={isOpenMode}
+          onClickMode={setIsOpenMode}
+        />
         <ListItemLayout
           style={{
             background: "rgb(246, 248, 250)",
@@ -72,7 +77,7 @@ function ListContainer() {
       </div>
       <div className={styles.paginationContainer}>
         <Pagination
-          maxPage={10}
+          maxPage={maxPage}
           currentPage={page}
           onClickPageButton={(number) => setPage(number)}
         />
