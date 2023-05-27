@@ -1,4 +1,3 @@
-import { useState } from "react";
 import cx from "clsx";
 import styles from "./OpenClosedFilters.module.css";
 

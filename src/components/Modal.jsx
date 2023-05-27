@@ -26,7 +26,7 @@ function Modal({
   return (
     <div className={cx(styles.modal, { [styles.opened]: opened })}>
       <div className={styles.header}>
-        <span>{title}</span>
+        <span>Filter by {title}</span>
         <button onClick={onClose}>X</button>
       </div>
       <div className={styles.input}>
