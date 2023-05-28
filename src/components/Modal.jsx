@@ -10,17 +10,22 @@ function Modal({
   searchDataList,
   onClickCell,
 }) {
-  const [searchValue, setSearchValue] = useState("");
   const [filteredData, setFilteredData] = useState(searchDataList);
-
-  // useEffect(() => {
-  //   console.log({ searchValue });
-  // }, [searchValue]);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
-    // setFilteredData(searchDataList.filter((item) => item.some("...")));
-    // setFilteredData(["apple"]);
-    setFilteredData(searchDataList.filter((item) => item === searchValue));
+    setFilteredData(searchDataList);
+  }, [searchDataList]);
+
+  useEffect(() => {
+    if (searchValue === "") {
+      setFilteredData(searchDataList);
+    } else {
+      const filterSearchList = searchDataList.filter((item) =>
+        item.name.toLowerCase().includes(searchValue.toLowerCase()),
+      );
+      setFilteredData(filterSearchList);
+    }
   }, [searchDataList, searchValue]);
 
   return (
@@ -36,11 +41,22 @@ function Modal({
           onChange={(e) => setSearchValue(e.target.value)}
         />
       </div>
-      {filteredData.map((data) => (
-        <div key={data} onClick={onClickCell}>
-          {data}
-        </div>
-      ))}
+      <div className={styles.list}>
+        {filteredData.map((data) => (
+          <div
+            onClick={() => {
+              const isLabel = title.toLowerCase() === "label";
+              const paramKey = isLabel ? "labels" : title.toLowerCase();
+              onClickCell({ [paramKey]: data.name });
+              console.log({ [paramKey]: data.npname });
+            }}
+            key={data.name}
+            className={styles.item}
+          >
+            {data.name}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
