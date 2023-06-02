@@ -1,34 +1,53 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
-import styles from './Tabs.module.css'
-import cx from 'clsx'
+import styles from "./Tabs.module.css";
+import cx from "clsx";
 
-const tabList = ['Code', 'Issues', 'Pull requests', 'Actions', 'Project', 'Wiki', 'Security', 'Insights', 'Setting']
+const tabList = [
+  { name: "Code", pathname: "/code" },
+  { name: "Issues", pathname: "/issue" },
+  { name: "Pull requests", pathname: "/pulls" },
+  { name: "Actions", pathname: "/actions" },
+  { name: "Project", pathname: "/project" },
+  { name: "Wiki", pathname: "/wiki" },
+  { name: "Security", pathname: "/security" },
+  { name: "Insights", pathname: "/insights" },
+  { nsme: "Setting", pathname: "/setting" },
+];
 
-function Tabs({title, number}) {
-  const [selectedTapIdx, setSelectedTapIdx] = useState(0)
+function Tabs({ title, number }) {
+  const [selectedTapIdx, setSelectedTapIdx] = useState(0);
+
+  const { pathname } = useLocation();
+
   return (
     <ul className={styles.tabList}>
       {tabList.map((tab, idx) => (
         <Tab
-          key={`${idx}`} 
-          title={tab} 
-          onClick={()=> setSelectedTapIdx(idx)} 
-          selected ={selectedTapIdx ===idx}
+          key={idx}
+          item={tab}
+          onClick={() => setSelectedTapIdx(idx)}
+          selected={pathname === tab.pathname}
         />
       ))}
     </ul>
-  )
+  );
 }
-function Tab({title, selected, onClick, number}) {
+function Tab({ item, selected, onClick, number }) {
   return (
     <li>
-      <button onClick={onClick} className={cx(styles.tab, {[styles.selected]: selected})}>
-        <span>{title}</span>
-        {number && <div className={styles.circle}>{number}</div>}
-      </button>
+      <Link to={item.pathname} className={styles.link}>
+        <button
+          onClick={onClick}
+          className={cx(styles.tab, { [styles.selected]: selected })}
+        >
+          <span>{item.name}</span>
+          {number && <div className={styles.circle}>{number}</div>}
+        </button>
+      </Link>
     </li>
-  )
+  );
 }
 
-export default Tabs
+export default Tabs;
