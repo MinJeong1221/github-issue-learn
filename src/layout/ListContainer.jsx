@@ -16,12 +16,12 @@ function ListContainer() {
   const [list, setList] = useState([]); //data
   // const [page, setPage] = useState(1);
   // const [isOpenMode, setIsOpenMode] = useState(true);
-  const [params, setParams] = useState();
+  // const [params, setParams] = useState();
   const maxPage = 10;
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const page = parseInt(searchParams.get("page"), 10);
-  const mode = searchParams.get("mode");
+  const page = parseInt(searchParams.get("page") ?? 1, 10);
+  const state = searchParams.get("state");
 
   async function getData(params) {
     const data = await axios.get(`${GITHUB_API}/repos/facebook/react/issues`, {
@@ -31,8 +31,8 @@ function ListContainer() {
   }
 
   useEffect(() => {
-    getData({ page, state: mode, ...params });
-  }, [page, mode, params]);
+    getData(searchParams);
+  }, [searchParams]);
 
   // console.log({ list });
 
@@ -48,8 +48,8 @@ function ListContainer() {
           <Button color={"green"}>New Issue</Button>
         </div>
         <OpenClosedFilters
-          isOpenMode={mode !== "closed"}
-          onClickMode={(mode) => setSearchParams({ mode })}
+          isOpenMode={state !== "closed"}
+          onClickMode={(state) => setSearchParams({ state })}
         />
         <ListItemLayout
           style={{
@@ -65,7 +65,7 @@ function ListContainer() {
               //필터링된 요소에 맞게 데이터를 불러오기
               //const data = getData('필터링된 정보')
               //setList(data);
-              setParams(params);
+              setSearchParams(params);
             }}
           />
         </ListItemLayout>
