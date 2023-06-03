@@ -16,6 +16,7 @@ function Pagination({ currentPage, maxPage, onClickPageButton }) {
       </button>
       {new Array(maxPage).fill(null).map((_, i) => (
         <PageButton
+          key={i}
           number={i + 1}
           onClick={onClickPageButton}
           selected={i + 1 === currentPage}
@@ -30,7 +31,7 @@ function Pagination({ currentPage, maxPage, onClickPageButton }) {
         )}
         disabled={currentPage === maxPage}
       >
-        {"Next >"}
+        {`Next >`}
       </button>
     </div>
   );

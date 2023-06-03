@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import styles from "./ListContainer.module.css";
 import Button from "../components/Button";
@@ -13,10 +14,14 @@ function ListContainer() {
   const [inputValue, setInputValue] = useState("is:pr id:open");
   const [checked, setChecked] = useState(false);
   const [list, setList] = useState([]); //data
-  const [page, setPage] = useState(1);
-  const [isOpenMode, setIsOpenMode] = useState(true);
+  // const [page, setPage] = useState(1);
+  // const [isOpenMode, setIsOpenMode] = useState(true);
   const [params, setParams] = useState();
   const maxPage = 10;
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = parseInt(searchParams.get("page"), 10);
+  const mode = searchParams.get("mode");
 
   async function getData(params) {
     const data = await axios.get(`${GITHUB_API}/repos/facebook/react/issues`, {
@@ -26,8 +31,8 @@ function ListContainer() {
   }
 
   useEffect(() => {
-    getData({ page, state: isOpenMode ? "open" : "closed", ...params });
-  }, [page, isOpenMode, params]);
+    getData({ page, state: mode, ...params });
+  }, [page, mode, params]);
 
   // console.log({ list });
 
@@ -43,8 +48,8 @@ function ListContainer() {
           <Button color={"green"}>New Issue</Button>
         </div>
         <OpenClosedFilters
-          isOpenMode={isOpenMode}
-          onClickMode={setIsOpenMode}
+          isOpenMode={mode !== "closed"}
+          onClickMode={(mode) => setSearchParams({ mode })}
         />
         <ListItemLayout
           style={{
@@ -79,7 +84,9 @@ function ListContainer() {
         <Pagination
           maxPage={maxPage}
           currentPage={page}
-          onClickPageButton={(number) => setPage(number)}
+          onClickPageButton={(pagenumber) =>
+            setSearchParams({ page: pagenumber })
+          }
         />
       </div>
     </>

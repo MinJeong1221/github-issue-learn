@@ -6,15 +6,15 @@ function OpenClosedFilters({ isOpenMode, onClickMode }) {
     <>
       <OpenClosedFilter
         // size={openModeDataSize}
-        state="Open"
+        state={"Open"}
         selected={isOpenMode}
-        onClick={() => onClickMode(true)}
+        onClick={() => onClickMode("open")}
       />
       <OpenClosedFilter
         // size={closeModeDataSize}
-        state="Closed"
+        state={"Closed"}
         selected={!isOpenMode}
-        onClick={() => onClickMode(false)}
+        onClick={() => onClickMode("closed")}
       />
     </>
   );
