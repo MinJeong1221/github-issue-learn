@@ -16,9 +16,7 @@ const tabList = [
   { nsme: "Setting", pathname: "/setting" },
 ];
 
-function Tabs({ title, number }) {
-  const [selectedTapIdx, setSelectedTapIdx] = useState(0);
-
+function Tabs() {
   const { pathname } = useLocation();
 
   return (
@@ -27,8 +25,7 @@ function Tabs({ title, number }) {
         <Tab
           key={idx}
           item={tab}
-          onClick={() => setSelectedTapIdx(idx)}
-          selected={pathname === tab.pathname}
+          selected={(pathname === "/" ? "/issue" : pathname) === tab.pathname}
         />
       ))}
     </ul>
@@ -38,10 +35,7 @@ function Tab({ item, selected, onClick, number }) {
   return (
     <li>
       <Link to={item.pathname} className={styles.link}>
-        <button
-          onClick={onClick}
-          className={cx(styles.tab, { [styles.selected]: selected })}
-        >
+        <button className={cx(styles.tab, { [styles.selected]: selected })}>
           <span>{item.name}</span>
           {number && <div className={styles.circle}>{number}</div>}
         </button>

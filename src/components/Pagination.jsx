@@ -4,7 +4,7 @@ import styles from "./Pagination.module.css";
 
 function Pagination({ currentPage, maxPage, onClickPageButton }) {
   return (
-    <div>
+    <div className={styles.pagenation}>
       <button
         className={cx(
           styles.button /* { [styles.disabled]: currentPage === 1 }*/,
