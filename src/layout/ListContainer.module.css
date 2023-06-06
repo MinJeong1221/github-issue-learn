@@ -2,10 +2,6 @@
   padding: 0px 32px;
   margin-top: 24px;
 }
-.greenButton{
-  background-color: green;
-  color: #FFF ;
-}
 .topSection{
   display: flex;
   flex-direction: "space-between";
@@ -26,4 +22,8 @@
 .paginationContainer{
   display: flex;
   justify-content: center;
+}
+
+.link{
+  text-decoration: none;
 }

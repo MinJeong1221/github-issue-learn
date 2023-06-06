@@ -14,6 +14,7 @@ import Wiki from './pages/Wiki';
 import Security from './pages/Security';
 import Insights from './pages/Insights';
 import Setting from './pages/Setting';
+import CreateIssue from './pages/CreateIssue';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path='/' element={<Issue />} />
         <Route path='/code' element={<Code />} />
         <Route path='/issue' element={<Issue />} />
+        <Route path='/new' element={<CreateIssue />} />
         <Route path='/pulls' element={<PullRequests />} />
         <Route path='/actions' element={<Actions />} />
         <Route path='/project' element={<Project />} />
