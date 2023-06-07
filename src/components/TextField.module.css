@@ -15,3 +15,7 @@
   min-height: 200px;
   margin-top: 8px;
 }
+
+.error{
+  outline-color: red;
+}
