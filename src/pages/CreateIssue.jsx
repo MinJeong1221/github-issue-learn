@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import cx from "clsx";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -8,11 +8,15 @@ import TextField from "../components/TextField";
 import Button from "../components/Button";
 import { useForm } from "../hooks";
 import { GITHUB_API } from "../api";
+import { UserContext } from "../context/UserContext";
 
 function CreateIssue() {
   const inputRef = useRef();
   const textareaRef = useRef();
   const navigate = useNavigate();
+  const data = useContext(UserContext);
+
+  // console.log({ data });
 
   const { isSubmitting, inputValues, onChange, errors, handleSubmit } = useForm(
     {
