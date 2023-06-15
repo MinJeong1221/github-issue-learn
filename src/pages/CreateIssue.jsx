@@ -8,15 +8,15 @@ import TextField from "../components/TextField";
 import Button from "../components/Button";
 import { useForm } from "../hooks";
 import { GITHUB_API } from "../api";
-import { UserContext } from "../context/UserContext";
+import { useUser } from "../hooks";
 
 function CreateIssue() {
   const inputRef = useRef();
   const textareaRef = useRef();
   const navigate = useNavigate();
-  const data = useContext(UserContext);
+  const user = useUser();
 
-  // console.log({ data });
+  console.log({ user });
 
   const { isSubmitting, inputValues, onChange, errors, handleSubmit } = useForm(
     {

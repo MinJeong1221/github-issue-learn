@@ -13,37 +13,19 @@ import Security from './pages/Security';
 import Insights from './pages/Insights';
 import Setting from './pages/Setting';
 import CreateIssue from './pages/CreateIssue';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { GITHUB_API } from './api';
-import { UserContext } from './context/UserContext';
+import { useUser } from './hooks';
 
+//캐시 - 쉽게 변하지 않는 데이터르 ㄹ임시적으로 제장해두는 부분 User
 
 function App() {
 
-  const [user, setUser] = useState();
-
-  useEffect(() => {
-    getUserInfo();
-  }, []);
-
-  async function getUserInfo() {
-    const data = await axios.get(`${GITHUB_API}/user`, {
-      headers: {
-        Authorization: process.env.REACT_APP_GITHUB_TOKEN,
-        "Content-Type": "applications/json",
-      },
-    });
-    setUser(data.date);
-  }
-
-  console.log({ user });
+  const user = useUser();
 
 
 
   //'Code', 'Issues', 'Pull requests', 'Actions', 'Project', 'Wiki', 'Security', 'Insights', 'Setting'
   return (
-    <UserContext.Provider value={{ user }}>
+    <>
       <Nav />
       <Header />
       <Routes>
@@ -59,7 +41,7 @@ function App() {
         <Route path='/insights' element={<Insights />} />
         <Route path='/setting' element={<Setting />} />
       </Routes>
-    </UserContext.Provider>
+    </>
 
   );
 }
