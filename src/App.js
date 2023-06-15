@@ -13,19 +13,23 @@ import Security from './pages/Security';
 import Insights from './pages/Insights';
 import Setting from './pages/Setting';
 import CreateIssue from './pages/CreateIssue';
-import { useUser } from './hooks';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+// Context Api - 전역적인 정보 prop drilling 없이 사용할때
+// => 굳이 사용안해도 된다면, 
+// hooks로 빼내어 사용한다.
+// => hooks로 선언한 부분이 반복적으로 네트워크 콜을 유발한다면, cache를 통해 개선해볼 수 있을것.
 
 //캐시 - 쉽게 변하지 않는 데이터르 ㄹ임시적으로 제장해두는 부분 User
+const queryClient = new QueryClient;
 
 function App() {
-
-  const user = useUser();
 
 
 
   //'Code', 'Issues', 'Pull requests', 'Actions', 'Project', 'Wiki', 'Security', 'Insights', 'Setting'
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Nav />
       <Header />
       <Routes>
@@ -41,7 +45,7 @@ function App() {
         <Route path='/insights' element={<Insights />} />
         <Route path='/setting' element={<Setting />} />
       </Routes>
-    </>
+    </QueryClientProvider>
 
   );
 }
