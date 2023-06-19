@@ -1,10 +1,8 @@
-import React from 'react'
-import styles from "./Nav.module.css"
+import React from "react";
+import styles from "./Nav.module.css";
 
 function Nav() {
-  return (
-    <div className={styles.nav}>Nav</div>
-  )
+  return <div className={styles.nav}>GITHUB MJ</div>;
 }
 
-export default Nav
+export default Nav;

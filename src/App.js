@@ -24,9 +24,6 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 const queryClient = new QueryClient;
 
 function App() {
-
-
-
   //'Code', 'Issues', 'Pull requests', 'Actions', 'Project', 'Wiki', 'Security', 'Insights', 'Setting'
   return (
     <QueryClientProvider client={queryClient}>
