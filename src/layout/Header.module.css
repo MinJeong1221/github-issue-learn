@@ -4,6 +4,19 @@
   border-bottom: 1px solid #ddd;
   box-shadow: inset -1px 0 hsla(210, 18%, 87%, 1);
 }
+.toSection{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.name{
+  font-size: 20px;
+  color: #0969da;
+}
+.bold{
+  font-weight: 800;
+}
 .buttonContainer{
   display: flex;
   margin-bottom: 20px;
