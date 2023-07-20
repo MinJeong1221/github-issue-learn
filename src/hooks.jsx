@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { GITHUB_API } from "./api";
 import { useQuery } from "react-query";
